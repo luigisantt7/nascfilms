@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { site } from "@/data/site";
 import { content } from "@/data/content";
@@ -49,10 +49,26 @@ function FilmCarousel({ films }: { films: string[] }) {
   const [active, setActive] = useState(0);
   const isMobile = useIsMobile();
   const peekOffset = isMobile ? 34 : 62;
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   function go(delta: number) {
     setActive((i) => (i + delta + films.length) % films.length);
   }
+
+  // Only the active video plays and has sound; every other one is paused and
+  // muted, so switching slides never leaves a previous video running/audible.
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === active) {
+        video.muted = false;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        video.muted = true;
+      }
+    });
+  }, [active]);
 
   return (
     <div className="mb-16">
@@ -87,6 +103,9 @@ function FilmCarousel({ films }: { films: string[] }) {
             return (
               <video
                 key={`${i}-${src}`}
+                ref={(el) => {
+                  videoRefs.current[i] = el;
+                }}
                 src={src}
                 muted
                 loop
@@ -94,7 +113,7 @@ function FilmCarousel({ films }: { films: string[] }) {
                 preload="metadata"
                 controls={isActive}
                 onClick={() => !isActive && setActive(i)}
-                className={`absolute rounded-sm shadow-[0_30px_60px_rgba(0,0,0,.45)] transition-all duration-500 ease-out ${
+                className={`absolute max-w-none rounded-sm object-contain shadow-[0_30px_60px_rgba(0,0,0,.45)] transition-all duration-500 ease-out ${
                   isActive
                     ? "h-full w-auto opacity-100"
                     : "h-[72%] w-auto cursor-pointer opacity-35 hover:opacity-55"

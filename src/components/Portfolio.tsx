@@ -83,66 +83,68 @@ export function Portfolio() {
       </div>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="grid max-h-[88vh] max-w-[920px] grid-rows-[auto] gap-0 overflow-y-auto border-none bg-umber-deep p-0 text-paper">
+        <DialogContent className="grid max-h-[92vh] w-[95vw] max-w-[1160px] grid-rows-[45vh_1fr] gap-0 overflow-hidden border-none bg-umber-deep p-0 text-paper sm:h-[85vh] sm:grid-rows-1 sm:grid-cols-[1.3fr_1fr]">
           {active && (
             <>
-              <div
-                className="relative h-[38vh] w-full shrink-0 sm:h-[46vh]"
-                style={{
-                  background: photos.length ? undefined : "linear-gradient(150deg,#5A4030,#171310)",
-                }}
-              >
-                {photos.length > 0 && (
-                  <img
-                    src={photos[photoIndex]}
-                    alt=""
-                    className="h-full w-full object-contain"
-                  />
-                )}
+              <div className="flex h-full min-h-0 min-w-0 flex-col bg-black/25">
+                <div
+                  className="relative min-h-0 flex-1"
+                  style={{
+                    background: photos.length ? undefined : "linear-gradient(150deg,#5A4030,#171310)",
+                  }}
+                >
+                  {photos.length > 0 && (
+                    <img
+                      src={photos[photoIndex]}
+                      alt=""
+                      className="h-full w-full object-contain"
+                    />
+                  )}
+                  {photos.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        aria-label="Foto anterior"
+                        onClick={() => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length)}
+                        className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Próxima foto"
+                        onClick={() => setPhotoIndex((i) => (i + 1) % photos.length)}
+                        className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                      </button>
+                      <span className="absolute bottom-3 right-3 rounded-sm bg-black/40 px-2 py-1 text-[11px] text-white">
+                        {photoIndex + 1} / {photos.length}
+                      </span>
+                    </>
+                  )}
+                </div>
                 {photos.length > 1 && (
-                  <>
-                    <button
-                      type="button"
-                      aria-label="Foto anterior"
-                      onClick={() => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length)}
-                      className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
-                    >
-                      <ChevronLeft className="h-5 w-5" />
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Próxima foto"
-                      onClick={() => setPhotoIndex((i) => (i + 1) % photos.length)}
-                      className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                    <span className="absolute bottom-3 right-3 rounded-sm bg-black/40 px-2 py-1 text-[11px] text-white">
-                      {photoIndex + 1} / {photos.length}
-                    </span>
-                  </>
+                  <div className="flex shrink-0 gap-2 overflow-x-auto border-t border-white/10 bg-black/20 px-4 py-3">
+                    {photos.map((p, i) => (
+                      <button
+                        key={p}
+                        type="button"
+                        onClick={() => setPhotoIndex(i)}
+                        aria-label={`Ver foto ${i + 1}`}
+                        className={`h-14 w-20 shrink-0 overflow-hidden rounded-sm border transition-opacity ${
+                          i === photoIndex ? "border-sand opacity-100" : "border-white/15 opacity-60 hover:opacity-90"
+                        }`}
+                      >
+                        <img src={p} alt="" className="h-full w-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
                 )}
               </div>
-              {photos.length > 1 && (
-                <div className="flex shrink-0 gap-2 overflow-x-auto border-b border-white/10 bg-black/20 px-6 py-3 sm:px-11">
-                  {photos.map((p, i) => (
-                    <button
-                      key={p}
-                      type="button"
-                      onClick={() => setPhotoIndex(i)}
-                      aria-label={`Ver foto ${i + 1}`}
-                      className={`h-14 w-20 shrink-0 overflow-hidden rounded-sm border transition-opacity ${
-                        i === photoIndex ? "border-sand opacity-100" : "border-white/15 opacity-60 hover:opacity-90"
-                      }`}
-                    >
-                      <img src={p} alt="" className="h-full w-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-              <div className="px-6 py-9 sm:px-11">
+              <div className="min-h-0 min-w-0 overflow-y-auto px-6 py-8 sm:px-9 sm:py-10">
                 <DialogTitle asChild>
-                  <p className="mb-2 font-display text-2xl sm:text-[34px]">{active.title}</p>
+                  <p className="mb-2 font-display text-2xl sm:text-[32px]">{active.title}</p>
                 </DialogTitle>
                 <p className="mb-2.5 text-[11px] uppercase tracking-[.12em] text-umber-light">
                   {active.type}
@@ -153,7 +155,7 @@ export function Portfolio() {
                   {active.city ? " — " : ""}
                   {active.year}
                 </p>
-                <p className="max-w-[60ch] text-[15px] leading-relaxed text-white/70">
+                <p className="max-w-[48ch] text-[15px] leading-relaxed text-white/70">
                   {active.desc}
                 </p>
                 {active.filmUrl && (
