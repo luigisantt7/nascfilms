@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vídeos grandes demais para git/GitHub (limite de 100MB por arquivo).
+# Hospedados separadamente (ex. Vercel Blob) — veja README.md.
+public/videos/
+
+# Config local do Claude Code (dev server desta sessão), não é do projeto em si.
+.claude/
