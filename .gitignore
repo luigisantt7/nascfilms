@@ -29,3 +29,6 @@ public/videos/
 
 # Config local do Claude Code (dev server desta sessão), não é do projeto em si.
 .claude/
+
+.vercel
+.env*

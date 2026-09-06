@@ -2,10 +2,10 @@
   "heroImage": "/site/hero-1788730932447-2.jpg",
   "aboutImage": "/site/sobre-1788730946117-3.jpg",
   "featuredFilms": [
-    "/videos/feira-vocacional-aftermovie-1788731819763-1.mp4",
-    "/videos/img-2711-mp-1788733126341-1.mov",
-    "/videos/chamc-revelacao-1788733271895-4.mp4",
-    "/videos/ordenacaosac-geral-1788733726505-5.mp4",
-    "/videos/chamc-geral-1788733263303-3.mp4"
+    "https://bqj61hl1m0xh7f10.public.blob.vercel-storage.com/feira-vocacional-aftermovie-1788731819763-1-9uzbJyLhcieEBBNx1BmiAcP7df0zVz.mp4",
+    "https://bqj61hl1m0xh7f10.public.blob.vercel-storage.com/img-2711-mp-1788733126341-1-6kkeMQH8hZEL9HXsdkE5ILKQW08Fe8.mov",
+    "https://bqj61hl1m0xh7f10.public.blob.vercel-storage.com/chamc-revelacao-1788733271895-4-K3blzJ92P7ILEtATOSscLpelsVmzh2.mp4",
+    "https://bqj61hl1m0xh7f10.public.blob.vercel-storage.com/ordenacaosac-geral-1788733726505-5-VLlK7lzvOaZEldbdMjEBGU0QKoWIaC.mp4",
+    "https://bqj61hl1m0xh7f10.public.blob.vercel-storage.com/chamc-geral-1788733263303-3-yn4gutBI4g1QuTV9FXdztbg68ktIGm.mp4"
   ]
 }
