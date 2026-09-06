@@ -29,7 +29,7 @@ export function Services() {
     <section id="servicos" className="bg-paper-dim py-28">
       <div className="mx-auto max-w-[1240px] px-5 sm:px-8 lg:px-14">
         <h2 className="mb-14 font-display text-[30px] font-medium tracking-[-.01em] sm:text-[38px] lg:text-[50px]">
-          O que eu faço
+          Serviços
         </h2>
         <div className="grid grid-cols-1 gap-px border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {SERVICES.map((s) => (

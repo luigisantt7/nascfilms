@@ -96,7 +96,7 @@ export function Portfolio() {
                   <img
                     src={photos[photoIndex]}
                     alt=""
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 )}
                 {photos.length > 1 && (
